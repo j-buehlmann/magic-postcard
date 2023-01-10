@@ -1,0 +1,32 @@
+const express = require('express');
+const openai = require('openai');
+const bodyParser = require('body-parser');
+
+openai.apiKey = OPENAI_API_KEY;
+
+const app = express();
+
+app.use(bodyParser.json());
+
+app.post('/api/gpt3', async (req, res) => {
+  const { prompt } = req.body;
+
+  try {
+    const response = await openai.completions.create({
+      engine: "text-davinci-003",
+      prompt,
+      max_tokens: 2048,
+      temperature: 0.5,
+    });
+
+    const output = response.choices[0].text;
+    res.send({ output });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: 'An error occurred' });
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
