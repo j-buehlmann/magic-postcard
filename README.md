@@ -1,12 +1,11 @@
-# Dall-E 2 AI Art Generator
+# Magic Postcard Creator
 
-This project will generate images from text using AI and uses QStash to manage serverless function timeouts.
+This project will generate images and postcard text with AI and automatically lets you send the card to your desired recipient. 
 
 ![OG Image](/public/ogimage.png)
 
 ## Demo
 
-Link: [https://dalle-2.vercel.app](https://dalle-2.vercel.app)
 
 ## How it works
 
@@ -14,11 +13,7 @@ It uses an ML model from OpenAI called DALLE-2 to generate an image using AI wit
 
 Because API calls are handled by QStash rather than within the Vercel serverless function, they will not time out when deployed on Vercel's Hobby plan, which has a timeout limit of 10s.
 
-## Running Locally
 
-To run this locally, you'll need to sign up to https://openai.com and create a new API key ($18 of free credit is available for new users) and set OPENAI_API_KEY accordingly. You'll also need to set environment variables to connect to Upstash: you can do this by [installing the Vercel Upstash integration](https://vercel.com/integrations/upstash).
-
-Then, run the application in the command line and it will be available at `http://localhost:3000`.
 
 ```bash
 npm run dev
